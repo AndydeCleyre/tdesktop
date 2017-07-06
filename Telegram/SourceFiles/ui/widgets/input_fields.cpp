@@ -18,6 +18,8 @@ to link the code of portions of this program with the OpenSSL library.
 Full license: https://github.com/telegramdesktop/tdesktop/blob/master/LICENSE
 Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
 */
+#include <spellcheckdecorator.h>
+
 #include "ui/widgets/input_fields.h"
 
 #include "ui/widgets/popup_menu.h"
@@ -1750,6 +1752,7 @@ InputArea::InputArea(QWidget *parent, const style::InputField &st, base::lambda<
 , _inner(this)
 , _oldtext(val)
 , _placeholderFactory(std::move(placeholderFactory)) {
+	Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(_inner);
 	_inner->setAcceptRichText(false);
 	resize(_st.width, _st.heightMin);
 
